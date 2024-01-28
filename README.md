@@ -1,3 +1,17 @@
+# MyFlix Client
+
+Welcome to the MyFlix client project! This project is part of the Full Stack Developer Nanodegree.
+
+## Project Structure
+
+myFlix-client
+├── .gitignore
+├── package.json
+├── src
+│ ├── index.html
+│ ├── index.scss
+│ └── index.jsx
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
