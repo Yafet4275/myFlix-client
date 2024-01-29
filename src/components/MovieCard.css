@@ -1,0 +1,12 @@
+/* MovieCard.css */
+.movie-card {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.movie-card:hover {
+    background-color: #e0e0e0;
+}
+  

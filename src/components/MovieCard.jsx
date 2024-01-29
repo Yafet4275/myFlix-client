@@ -1,8 +1,9 @@
 import React from 'react';
+import './MovieCard.css';
 
 function MovieCard({ movie, onClick }) {
   return (
-    <div onClick={onClick}>
+    <div className="movie-card" onClick={onClick}>
       <h2>{movie.title}</h2>
     </div>
   );
