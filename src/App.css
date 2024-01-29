@@ -6,7 +6,10 @@
 html,
 body {
   font-size: 18px;
-  background-color: #87e49b;
+  background-image: url('../public/images/WhatsApp\ Image\ 2024-01-28\ at\ 22.41.23_394c2f60.jpg');
+  background-size: cover; /* Adjusts the background image size to cover the entire element */
+  background-position: center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
 }
 
 .container {
@@ -14,6 +17,7 @@ body {
 }
 
 h1 {
+  color:bisque;
   max-width: 940px;
   font-size: 2.5em;
   font-family: Lato, sans-serif;
