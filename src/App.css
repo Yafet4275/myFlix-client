@@ -9,6 +9,9 @@ body {
   background-color: #87e49b;
 }
 
+.container {
+  margin: 60px 40px;
+}
 
 h1 {
   max-width: 940px;
@@ -21,6 +24,7 @@ h1 {
 
 
 .content {
+  margin-top: 15px;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
