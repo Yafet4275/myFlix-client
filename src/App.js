@@ -33,11 +33,14 @@ class App extends React.Component {
 
     return (
       <div className="container">
+        <div className='title'><h1>My Flix App</h1></div>
+        <div className='content'>
         {/* Render the appropriate view based on the current state */}
         {currentView === 'main' && <MainView onMovieClick={this.handleMovieClick} />}
         {currentView === 'movie' && (
           <MovieView movie={selectedMovie} onBackToMain={this.handleBackToMain} />
         )}
+        </div>
       </div>
     );
   }
