@@ -1,5 +1,5 @@
 import React from 'react';
-import './MovieView.css';
+import '../stylesheets/MovieView.css';
 
 function MovieView({ movie, onBack }) {
   return (

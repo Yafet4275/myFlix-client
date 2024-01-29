@@ -1,5 +1,5 @@
 import React from 'react';
-import './MovieCard.css';
+import '../stylesheets/MovieCard.css';
 
 function MovieCard({ movie, onClick }) {
   return (
