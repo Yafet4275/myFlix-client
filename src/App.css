@@ -3,8 +3,7 @@
   margin: 0;
 }
 
-html,
-body {
+html, body {
   font-size: 18px;
   background-image: url('../public/images/WhatsApp\ Image\ 2024-01-28\ at\ 22.41.23_394c2f60.jpg');
   background-size: cover; /* Adjusts the background image size to cover the entire element */
@@ -25,7 +24,6 @@ h1 {
   line-height: 1.1;
   margin: 20px 0;
 }
-
 
 .content {
   margin-top: 15px;
