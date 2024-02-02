@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
-import MainView from './components/MainView';
+import {MainView} from './components/MainView';
 import MovieView from './components/MovieView';
+import MovieCard from './components/MovieCard';
+
 
 class App extends React.Component {
   constructor(props) {
