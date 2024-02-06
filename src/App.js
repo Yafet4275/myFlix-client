@@ -7,7 +7,7 @@ import MovieView from './components/MovieView';
 function App() {
   return (
     <div className="App">
-      
+      < MainView />
     </div>
   );
 }
