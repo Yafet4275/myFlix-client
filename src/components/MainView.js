@@ -1,30 +1,80 @@
-import React, { useState } from 'react';
-import MovieCard from './MovieCard';
-import MovieView from './MovieView';
+import React, { useState, useEffect } from 'react';
+import { BookCard } from './BookCard';
 
-function MainView() {
-  const [movies, setMovies] = useState([
-    { id: 1, title: 'Movie 1' },
-    { id: 2, title: 'Movie 2' },
-    { id: 3, title: 'Movie 3' }
-  ]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const handleMovieClick = (movie) => {
-    setSelectedMovie(movie);
+export class Hello extends React.Component {
+  // code executed right when the component is created
+  constructor() {
+    super();
+    this.state = { currentDate: new Date() };
+  }
+
+  // code executed right after the component is added to the DOM.
+  componentDidMount() {
+    const interval = setInterval(() => {
+      this.setState({ currentDate: new Date() });
+    }, 1000);
+
+    this.setState({ interval });
+  }
+
+  // code executed just before the moment the component gets removed from the DOM.
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
+  }
+
+  render() {
+    return (
+      <h1>
+        Hello, {this.props.name}! The time is:
+        {this.state.currentDate.toLocaleTimeString()}
+      </h1>
+    );
+  }
+}
+
+export function MainView() {
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const handleBookClick = (selectedBook) => {
+    console.log("Selected Book:", selectedBook);
+    // 
   };
+
+  useEffect(() => {
+    fetch("https://openlibrary.org/search.json?q=star+wars")
+      .then(response => response.json())
+      .then(data => {
+        const booksFromApi = data.docs.map(doc => ({
+          id: doc.key,
+          title: doc.title,
+          image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
+          author: doc.author_name?.[0]
+        }));
+        setBooks(booksFromApi);
+        setLoading(false); // Set loading to false once data is fetched
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false); // Set loading to false on error
+      });
+  }, []);
 
   return (
     <div>
-      {selectedMovie ? (
-        <MovieView movie={selectedMovie} onBack={() => setSelectedMovie(null)} />
+      <hr />
+      <h2>Book List</h2>
+      {loading ? (
+        <p>Loading...</p>
       ) : (
-        movies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} onClick={() => handleMovieClick(movie)} />
-        ))
+        <div>
+          <hr />
+          {books.map(book => (
+            <BookCard key={book.id} book={book} onClick={handleBookClick} />
+          ))}
+        </div>
       )}
     </div>
   );
 }
-
-export default MainView;
