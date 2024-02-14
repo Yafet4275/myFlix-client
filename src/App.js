@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import {Movies, Hello} from './components/MainView';
+import {MainView, Hello} from './components/MainView';
 
 function App() {
   return (
     <div className="App">
       < Hello />
-      < Movies />
+      < MainView />
     </div>
   );
 }

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-export const BookCard = ({ book, onClick }) => {
+export const MovieCard = ({ movie, onClick }) => {
   return (
     <div
-      onClick={() => onClick(book)}>
-      {book.title}
+      onClick={() => onClick(movie)}>
+      {movie.title}
     </div>
   );
 };
 
-BookCard.propTypes = {
-  book: PropTypes.shape({
+MovieCard.propTypes = {
+  Movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     author: PropTypes.string
