@@ -3,6 +3,7 @@ import { LoginView } from './login-view/login-view';
 import { MovieCard } from './movie-card/MovieCard';
 import { MovieView } from './movie-view/MovieView';
 import { SignupView } from './signup-view/signup-view';
+// import './MainView.css';
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -19,9 +20,9 @@ export const MainView = () => {
       .then(response => response.json())
       .then((data) => {
         console.log("Movies from API:", data); // Log the received data
-        console.log("Lenght: ",data.length);
+        console.log("Lenght: ", data.length);
         setMovies(data);
-        console.log("selectedMovie: ",selectedMovie);
+        console.log("selectedMovie: ", selectedMovie);
         console.log(selectedMovie.length);
     })
     .catch(error => {
@@ -32,13 +33,13 @@ export const MainView = () => {
 
   if (!user) {
     return (
-    <>
-    <LoginView onLoggedIn={(user, token) => {setUser(user);
-    setToken(token);
-    }} /> 
-    or 
-    <SignupView /> 
-    </>
+    <div>
+      <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token);}} />
+     <hr/>
+     <hr/>
+     <hr/>
+      <SignupView /> 
+    </div>
     );
   }
 
@@ -99,6 +100,22 @@ export class Hello extends React.Component {
         Hello, {this.props.name}! The time is:
         {this.state.currentDate.toLocaleTimeString()}
       </h1>
+
+    // <div class="clock"> 
+    //   <div class="bg"> 
+    //     <h2 id="h">12</h2> 
+    //   </div> <h2>:</h2> 
+    //   <div class="bg"> 
+    //     <h2 id="m">20</h2> 
+    //   </div> <h2>:</h2> 
+    //   <div class="bg"> 
+    //     <h2 id="s">00</h2> 
+    //   </div> <div class="bg"> 
+    //     <h2 id="ap">AM</h2> 
+    //   </div> 
+    // </div>
+
+
     );
   }
 }

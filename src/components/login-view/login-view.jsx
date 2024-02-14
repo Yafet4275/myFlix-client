@@ -37,29 +37,79 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">
-        Submit
-      </button>
-    </form>
-  );
+  // return (
+  //   <div className="container mt-5">
+  //     <h2>Login</h2>
+  //     <form onSubmit={handleSubmit}>
+  //       <div className="form-group">
+  //         <label htmlFor="username">Username:</label>
+  //         <input
+  //           type="text"
+  //           className="form-control"
+  //           id="username"
+  //           value={username}
+  //           onChange={(e) => setUsername(e.target.value)}
+  //           required
+  //         />
+  //       </div>
+  //       <div className="form-group">
+  //         <label htmlFor="password">Password:</label>
+  //         <input
+  //           type="password"
+  //           className="form-control"
+  //           id="password"
+  //           value={password}
+  //           onChange={(e) => setPassword(e.target.value)}
+  //           required
+  //         />
+  //       </div>
+  //       <button type="submit" className="btn btn-primary">Submit</button>
+  //     </form>
+  //   </div>
+  // );
+
+
+return (
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          class="img-fluid" alt="Phone image"></img>
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+      <form onSubmit={handleSubmit}>
+      <div class="form-outline mb-4">
+        <input type="text" id="form1Example13" class="form-control form-control-lg" 
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required/>
+        <label class="form-label" for="form1Example13">Username</label>
+      </div>
+
+      <div class="form-outline mb-4">
+            <input type="password" id="form1Example23" class="form-control form-control-lg" 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required/>
+            <label class="form-label" for="form1Example23">Password</label>
+          </div>
+      
+      <div class="d-flex justify-content-around align-items-center mb-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="form1Example3"/>
+          <label class="form-check-label" for="form1Example3"> Remember me </label>
+        </div>
+          <a href="#!">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  </section>
+);
 };
