@@ -1,18 +1,26 @@
 import React, { useState } from "react";
+import { FormComponent } from '../signup-view/signup-view';
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showSignup, setShowSignup] = useState(false);
+
+  const handleRegisterClick = (event) => {
+    event.preventDefault();
+    setShowSignup(true);
+    console.log("SignUp: ", showSignup);
+  };  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Log the data before sending the request
-    console.log("Submitting login request with data:", { username, password });
+    // console.log("Submitting login request with data:", { username, password });
     const data = {
       Name: username,
       Password: password
     };
-    console.log("Data sent to server:", data); // Log the data before sending the request
+    // console.log("Data sent to server:", data); // Log the data before sending the request
     fetch("https://my-flix-app-yafet-1527256b5000.herokuapp.com/login", {
       method: "POST",
       headers: {
@@ -22,7 +30,7 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: ", data);
+        // console.log("Login response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
@@ -37,79 +45,61 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   };
 
-  // return (
-  //   <div className="container mt-5">
-  //     <h2>Login</h2>
-  //     <form onSubmit={handleSubmit}>
-  //       <div className="form-group">
-  //         <label htmlFor="username">Username:</label>
-  //         <input
-  //           type="text"
-  //           className="form-control"
-  //           id="username"
-  //           value={username}
-  //           onChange={(e) => setUsername(e.target.value)}
-  //           required
-  //         />
-  //       </div>
-  //       <div className="form-group">
-  //         <label htmlFor="password">Password:</label>
-  //         <input
-  //           type="password"
-  //           className="form-control"
-  //           id="password"
-  //           value={password}
-  //           onChange={(e) => setPassword(e.target.value)}
-  //           required
-  //         />
-  //       </div>
-  //       <button type="submit" className="btn btn-primary">Submit</button>
-  //     </form>
-  //   </div>
-  // );
+  const toggleForm = () => {
+    setShowSignup(!showSignup);
+  };
 
+  return (
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+      <div className="row d-flex align-items-center justify-content-center h-100">
+        <div className="col-md-8 col-lg-7 col-xl-6">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          className="img-fluid" alt="Phone image"></img>
+        </div>
+        <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        {showSignup ? (
+          <FormComponent toggleForm={() => setShowSignup(false)} />
+        ) : (
+          <form onSubmit={handleSubmit}>
+          <div className="form-outline mb-4">
+            <input type="text" id="form1Example13" className="form-control form-control-lg" 
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required/>
+            <label className="form-label" for="form1Example13">Username</label>
+          </div>
 
-return (
-  <section class="vh-100">
-    <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid" alt="Phone image"></img>
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-      <form onSubmit={handleSubmit}>
-      <div class="form-outline mb-4">
-        <input type="text" id="form1Example13" class="form-control form-control-lg" 
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required/>
-        <label class="form-label" for="form1Example13">Username</label>
-      </div>
-
-      <div class="form-outline mb-4">
-            <input type="password" id="form1Example23" class="form-control form-control-lg" 
+          <div className="form-outline mb-4">
+            <input type="password" id="form1Example23" className="form-control form-control-lg" 
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required/>
-            <label class="form-label" for="form1Example23">Password</label>
+            <label className="form-label" for="form1Example23">Password</label>
           </div>
-      
-      <div class="d-flex justify-content-around align-items-center mb-4">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="form1Example3"/>
-          <label class="form-check-label" for="form1Example3"> Remember me </label>
-        </div>
-          <a href="#!">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-        <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          
+          <div className="d-flex justify-content-around align-items-center mb-4">
+            <div className="form-check">
+              <input className="form-check-input" type="checkbox" id="form1Example3"/>
+              {" "}
+                  Remember me{" "} 
+                  </div>
+                  <a href="#!" onClick={handleRegisterClick}>Forgot password?</a>
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg btn-block">Sign in</button>
+                <div className="text-center">
+                  <p>
+                    Not a member? {" "}
+                    <a href="#!" onClick={toggleForm}>Sign up now</a>
+                  </p>
+                </div>
+              </form>
+            )}
           </div>
-      </form>
+        </div>
       </div>
-    </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 };

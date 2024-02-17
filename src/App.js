@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {MainView, Hello} from './components/MainView';
+import {MainView, Hello} from './components/Mainview/MainView';
 
 function App() {
   return (

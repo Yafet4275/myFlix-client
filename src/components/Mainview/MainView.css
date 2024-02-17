@@ -23,7 +23,8 @@ h2 {
   color: #85C1E9;
   padding: 30px}
   
-#m{margin: 0 10px 0 10px}
+#m {
+  margin: 0 10px 0 10px}
 
 .bg {
   display: flex;
@@ -43,8 +44,29 @@ h2 {
   background: inherit;
   position: relative;
   margin-left: 20px;
-  width: 2em;height: 2em;
+  width: 2em;
+  height: 2em;
   font-size: 16px;
   padding: 15px;
   border-radius: 50%;
   box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.2)}
+
+.container {
+  padding: 40px;
+}
+
+.logoutButton {
+  position: absolute;
+  top: 20px;
+  right:90px;
+}
+
+.clock-container {
+  padding-top: 15px;
+}
+
+.login-signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
