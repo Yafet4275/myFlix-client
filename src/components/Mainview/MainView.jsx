@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movieCard/MovieCard';
 import { MovieView } from '../movie-view/MovieView';
-// import { SignupView } from '../signup-view/signup-view';
 import './MainView.css';
-import { FormComponent } from '../signup-view/signup-view';
+
 
 export const MainView = () => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const storedToken = localStorage.getItem('token');
+
+  const [user, setUser] = useState(storedUser ? storedUser: null);
+  const [token, setToken] = useState(storedToken ? storedToken: null);
 
   if (!user) {
     return (
       <div className="container">
       <div className="login-signup-container">
         <LoginView onLoggedIn={ (user, token) => { setUser(user); setToken(token); }} />
-        {/* <FormComponent /> */}
       </div>
     </div>
   );
