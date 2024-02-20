@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from "prop-types";
-import { Button, Card } from "react-bootstrap";
-import './movieCard.css';
+import { Card, Button, Col, Row } from 'react-bootstrap';
+import './movieCard.css'; 
+
 
 export function MovieCard() {
   const [movies, setMovies] = useState([]);
@@ -42,27 +42,34 @@ export function MovieCard() {
   };
 
   return (
-    <div className='movie-container'>
-      {movies.map(movie => (
-        <Card>
-          <Card.Img variant="top" src={movie.ImageURL} />
-          <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
-            <Card.Text>Director: {movie.Director.Name}</Card.Text>
-            <Card.Text>Year: {movie.Year}</Card.Text>
-            {showDetails[movie._id] ? (
-              <>
-                <Card.Text>Rating: {movie.Rating}</Card.Text>
-                <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
-                <Card.Text>Description: {movie.Description}</Card.Text>
-              </>
-            ) : null}
-            <Button onClick={() => toggleDetails(movie._id)} variant="link">
-              {showDetails[movie._id] ? "Show Less" : "Show More"}
-            </Button>
-          </Card.Body>
-        </Card>
-      ))}
+    <div className="movie-container">
+      <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+        {movies.map((movie) => (
+          <Col key={movie._id} className="mb-5">
+            <Card>
+              <Card.Img className='card-img-top' variant="top" src={movie.ImageURL} />
+              <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>Director: {movie.Director.Name}</Card.Text>
+                <Card.Text>Year: {movie.Year}</Card.Text>
+                {showDetails[movie._id] && (
+                  <>
+                    <Card.Text>Rating: {movie.Rating}</Card.Text>
+                    <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
+                    <Card.Text>Description: {movie.Description}</Card.Text>
+                  </>
+                )}
+                <Button
+                  variant="link"
+                  onClick={() => toggleDetails(movie._id)}
+                >
+                  {showDetails[movie._id] ? 'Show Less' : 'Show More'}
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
-}
+};

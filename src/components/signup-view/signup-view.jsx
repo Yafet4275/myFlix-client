@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { LoginView } from '../login-view/login-view'
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const FormComponent = ({ toggleForm }) => {
   const [showLogin, setShowLogin] = useState(true);
@@ -21,7 +22,6 @@ export const FormComponent = ({ toggleForm }) => {
       Email: email,
       Birthday: birthday
     };
-    console.log("Dataaaaaaa: ", data);
     fetch("http://my-flix-app-yafet-1527256b5000.herokuapp.com/register", {
       method: "POST",
       body: JSON.stringify(data),
@@ -42,38 +42,43 @@ export const FormComponent = ({ toggleForm }) => {
     <>
     <form onSubmit={handleSubmit}>
       <div className="form-outline mb-4">
-      <input type="text" id="form1Example13" className="form-control form-control-lg"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)}
-      required
-      minLength="3"/>
-      <label className="form-label" for="form1Example13">Username</label>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          minLength="3"/>
+      </Form.Group>
       </div>
-      
       <div className="form-outline mb-4">
-        <input type="password" id="form1Example23" className="form-control form-control-lg" 
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required/>
-        <label className="form-label" for="form1Example23">Password</label>
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+            <Form.Control
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required/>
+            </Form.Group>
+        </div>
+
+      <div className="form-outline mb-4">
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email:</Form.Label>
+          <Form.Control 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required/>
+      </Form.Group>
       </div>
 
       <div className="form-outline mb-4">
-      <input type="email" id="form1Example23" className="form-control form-control-lg" 
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required/>
-        <label className="form-label" for="form1Example23">Email</label>
-      </div>
-
-      <div className="form-outline mb-4">
+      <label className="form-label" for="form1Example23">Birthday:</label>
       <input type="date" id="form1Example23" className="form-control form-control-lg" 
         value={birthday}
         onChange={(e) => setBirthday(e.target.value)}
         required/>
-      <label className="form-label" for="form1Example23">Birthday</label>
       </div>
-      <button type="submit" className="btn btn-primary btn-lg btn-block">Submit</button>
+      <Button variant="primary mb-4" type="submit">Submit</Button>
       <div className="text-center">
         <p>
           Alredy have an account? {" "}
