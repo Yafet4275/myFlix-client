@@ -5,9 +5,9 @@ import {MainView} from './components/Mainview/MainView';
 function App() {
   return (
     <div className="App">
-      <Container>
+      
         < MainView />
-      </Container>
+      
     </div>
   );
 }
