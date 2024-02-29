@@ -1,21 +1,21 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Navbar, Nav, Button } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './NavigationBar.css';
 
-const NavigationBar = ({ title, onLogout }) => {
+export const NavigationBar = ({ title, onLogout }) => {
   return (
     <>
     <Navbar bg="primary" data-bs-theme="dark">
       <Container className="custom-navbar-container">
-        <Navbar.Brand className='navbar-title'>{title}</Navbar.Brand>
+        <Navbar.Brand className='navbar-title mx-3'>{title}</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Link><Nav.Link href="movies">Movies</Nav.Link></Link>
+          <Link><Nav.Link href="profiles">Profiles</Nav.Link></Link>
         </Nav>
         <Nav>
-          <Button variant="light" onClick={onLogout} className="logout-btn">Logout</Button>
+          <Button variant="light" onClick={onLogout} className="logout-btn mx-3">Logout</Button>
         </Nav>
       </Container>
     </Navbar>
@@ -23,4 +23,3 @@ const NavigationBar = ({ title, onLogout }) => {
   );
 };
 
-export default NavigationBar;
