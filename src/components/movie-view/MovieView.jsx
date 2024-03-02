@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MovieView({ movie, onBack }) {
+export function MovieView({ movie, onBack }) {
   return (
     <div>
       <h2>{movie.title}</h2>
@@ -8,5 +8,3 @@ function MovieView({ movie, onBack }) {
     </div>
   );
 }
-
-export default MovieView;

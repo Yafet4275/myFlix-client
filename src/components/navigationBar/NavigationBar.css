@@ -1,0 +1,33 @@
+.navbar-custom {
+    background-color: #007bff;
+}
+  
+.navbar-brand {
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    margin-left: auto;
+}
+
+.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-navbar-container {
+    padding-left: 5px; /* Adjust as needed */
+    padding-right: 5px; /* Adjust as needed */
+  }
+
+.navbar-title {
+    font-size: 20px; /* Adjust as needed */
+    font-weight: bold;
+}
