@@ -8,7 +8,9 @@
 }
 
 .nav-link {
-    color: #fff;
+    color: inherit; /* Use the same color as the text color in your navigation bar */
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    text-decoration: none; /* Remove underline */
 }
 
 .logout-btn {

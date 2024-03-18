@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { FormComponent } from '../signup-view/signup-view';
 import { Button, Form } from "react-bootstrap/";
+import { useNavigate } from "react-router-dom";
 
 
-export const LoginView = ({ onLoggedIn }) => {
+export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showSignup, setShowSignup] = useState(false);
+  const navigate = useNavigate();
 
   const handleRegisterClick = (event) => {
     event.preventDefault();
     setShowSignup(true);
-    console.log("SignUp: ", showSignup);
+    // console.log("SignUp: ", showSignup);
   };  
 
   const handleSubmit = (event) => {
@@ -32,11 +34,15 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log("Login response: ", data);
+        console.log("Login response: ", data);
         if (data.user) {
+          // console.log("Data user");
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          // const storedUser = JSON.parse(localStorage.getItem('user'));
+          navigate("/home");
+          
+          // onLoggedIn(data.user, data.token);
         } else {
           alert("Invalid username or password");
         }
