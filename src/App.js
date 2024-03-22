@@ -11,6 +11,10 @@ import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 function App() {
   const router = createBrowserRouter([
     {
+      path: '/',
+      element: <LoginView />,
+    },
+    {
       path: '/login',
       element: <LoginView />,
     },
