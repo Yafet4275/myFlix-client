@@ -12,7 +12,7 @@ export function MovieCard() {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [showDetails, setShowDetails] = useState({});
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -52,7 +52,7 @@ export function MovieCard() {
       if (!response.ok) {
         throw new Error('Failed to add favorite movie');
       }
-        setFavorites(prevFavorites => prevFavorites.filter(movie => movie.id !== favoriteId));
+        // setFavorites(prevFavorites => prevFavorites.filter(movie => movie.id !== favoriteId));
         alert("Movie has been added successfully");
       } catch (error) {
         console.error('Error removing favorite:', error);

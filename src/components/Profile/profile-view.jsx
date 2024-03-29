@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Card, Button, Col, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavigationBar } from '../navigationBar/navigationBar';
 import './profile.css';
 
 
 export function ProfileView() {
-  const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [token, setToken] = useState(null);

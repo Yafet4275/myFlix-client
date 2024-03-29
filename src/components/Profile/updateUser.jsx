@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Row, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { NavigationBar } from '../navigationBar/navigationBar';
 
 
@@ -22,7 +22,7 @@ export const UpdateProfileForm = () => {
     const storedToken = localStorage.getItem("token");
     if (storedToken && storedUser) {
       setUser(storedUser);
-      console.log("User: ",user);
+      // console.log("User: ", user);
       setToken(storedToken);
       setFormdata({
         Name: storedUser.Name || "",

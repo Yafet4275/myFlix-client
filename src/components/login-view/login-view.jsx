@@ -18,8 +18,6 @@ export const LoginView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Log the data before sending the request
-    // console.log("Submitting login request with data:", { username, password });
     const data = {
       Name: username,
       Password: password
@@ -63,7 +61,7 @@ export const LoginView = () => {
       <div className="row d-flex align-items-center justify-content-center h-100">
         <div className="col-md-8 col-lg-7 col-xl-6">
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          className="img-fluid" alt="Phone image"></img>
+          className="img-fluid" alt="Phone"></img>
         </div>
         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         {showSignup ? (
