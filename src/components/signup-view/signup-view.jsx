@@ -9,10 +9,10 @@ export const FormComponent = ({ toggleForm }) => {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const handleRegisterClick = (event) => {
-    event.preventDefault();
-    setShowLogin(!showLogin);
-  };
+  // const handleRegisterClick = (event) => {
+  //   event.preventDefault();
+  //   setShowLogin(!showLogin);
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();

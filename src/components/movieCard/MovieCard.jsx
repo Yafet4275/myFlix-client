@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 export function MovieCard() {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem("token");
-  const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [movies, setMovies] = useState([]);
   const [showDetails, setShowDetails] = useState({});
   // const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export function MovieCard() {
       // Fetch movies only when the token is available
       fetchMovies(storedToken);
     }
-  }, []);
+  }, [storedToken, storedUser]);
 
   const fetchMovies = (token) => {
     fetch("https://my-flix-app-yafet-1527256b5000.herokuapp.com/movies", {
