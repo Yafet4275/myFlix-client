@@ -20,6 +20,7 @@ export function MovieCard() {
       setUser(storedUser);
       fetchMovies(storedToken);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchMovies = (token) => {
