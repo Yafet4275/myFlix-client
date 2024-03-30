@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { LoginView } from './components/login-view/login-view';
 import { MovieCard } from './components/movieCard/MovieCard';
 import { UpdateProfileForm } from './components/Profile/updateUser';
 import { ProfileView } from './components/Profile/profile-view';
-import { createBrowserRouter, BrowserRouter as Router, RouterProvider, useNavigate, Link } from 'react-router-dom';
-import { NavigationBar } from './components/navigationBar/navigationBar';
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/login',
+      path: '/',
       element: <LoginView />,
     },
     {

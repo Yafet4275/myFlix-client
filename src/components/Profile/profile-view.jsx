@@ -6,11 +6,11 @@ import './profile.css';
 
 
 export function ProfileView() {
-  const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [token, setToken] = useState(null);
   const [showDetails, setShowDetails] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +27,7 @@ export function ProfileView() {
   const handleLogout = () => {
     setUser(null);
     localStorage.clear();
-    window.location.href = '/login';
+    navigate("/");
   }
 
   const fetchFavorites = async (userId, token) => {

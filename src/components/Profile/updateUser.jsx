@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Row, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { NavigationBar } from '../navigationBar/navigationBar';
 
 
@@ -84,7 +84,7 @@ export const UpdateProfileForm = () => {
           throw new Error('Failed to delete profile');
         }
         localStorage.clear();
-        navigate("/login");
+        navigate("/");
       } catch (error) {
         console.error('Error deleting profile:', error);
         alert('Failed to delete profile. Please try again.');

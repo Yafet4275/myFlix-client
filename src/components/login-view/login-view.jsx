@@ -13,18 +13,14 @@ export const LoginView = () => {
   const handleRegisterClick = (event) => {
     event.preventDefault();
     setShowSignup(true);
-    // console.log("SignUp: ", showSignup);
   };  
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Log the data before sending the request
-    // console.log("Submitting login request with data:", { username, password });
     const data = {
       Name: username,
       Password: password
     };
-    // console.log("Data sent to server:", data); // Log the data before sending the request
     fetch("https://my-flix-app-yafet-1527256b5000.herokuapp.com/login", {
       method: "POST",
       headers: {
@@ -34,15 +30,10 @@ export const LoginView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Login response: ", data);
         if (data.user) {
-          // console.log("Data user");
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          // const storedUser = JSON.parse(localStorage.getItem('user'));
           navigate("/home");
-          
-          // onLoggedIn(data.user, data.token);
         } else {
           alert("Invalid username or password");
         }
@@ -63,7 +54,7 @@ export const LoginView = () => {
       <div className="row d-flex align-items-center justify-content-center h-100">
         <div className="col-md-8 col-lg-7 col-xl-6">
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          className="img-fluid" alt="Phone image"></img>
+          className="img-fluid" alt="Phone"></img>
         </div>
         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         {showSignup ? (

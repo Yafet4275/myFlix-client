@@ -12,15 +12,12 @@ export function MovieCard() {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [showDetails, setShowDetails] = useState({});
-  const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
   
   useEffect(() => {
-    // Check if the token is available
     if (storedToken) {
       setToken(storedToken);
       setUser(storedUser);
-      // Fetch movies only when the token is available
       fetchMovies(storedToken);
     }
   }, []);
@@ -52,10 +49,9 @@ export function MovieCard() {
       if (!response.ok) {
         throw new Error('Failed to add favorite movie');
       }
-        setFavorites(prevFavorites => prevFavorites.filter(movie => movie.id !== favoriteId));
         alert("Movie has been added successfully");
       } catch (error) {
-        console.error('Error removing favorite:', error);
+        console.error('Error adding movie:', error);
       }
   };
 
@@ -71,7 +67,7 @@ export function MovieCard() {
       <NavigationBar 
         title='MyFlix App'
         onLogout={() => { setUser(null); localStorage.clear(); 
-          navigate("/login");
+          navigate("/");
         }}/>
       { user ? (
       <Row className="mt-0">
@@ -85,6 +81,7 @@ export function MovieCard() {
                 <Card.Body>
                   <div className='cardBody-container'>
                   <Card.Title>{movie.Title}</Card.Title>
+                  <Card.Text>Id: {movie._id}</Card.Text>
                   <Card.Text>Director: {movie.Director.Name}</Card.Text>
                   {showDetails[movie._id] && (
                     <>
