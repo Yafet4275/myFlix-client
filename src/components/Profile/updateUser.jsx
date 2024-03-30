@@ -22,7 +22,6 @@ export const UpdateProfileForm = () => {
     const storedToken = localStorage.getItem("token");
     if (storedToken && storedUser) {
       setUser(storedUser);
-      console.log("User: ",user);
       setToken(storedToken);
       setFormdata({
         Name: storedUser.Name || "",
@@ -32,6 +31,7 @@ export const UpdateProfileForm = () => {
         Country: storedUser.Country || ""
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   const handleLogout = () => {
