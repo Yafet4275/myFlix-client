@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Col, Row } from 'react-bootstrap';
+import { Container, Card, Button, Col, Row } from 'react-bootstrap';
 import { NavigationBar } from '../navigationBar/navigationBar';
 import './movieCard.css';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export function MovieCard() {
@@ -56,6 +56,12 @@ export function MovieCard() {
       }
   };
 
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.clear();
+    navigate("/");
+  }
+
   const toggleDetails = (movieId) => {
     setShowDetails(prevState => ({
       ...prevState,
@@ -65,50 +71,64 @@ export function MovieCard() {
 
   return (
     <>
-      <NavigationBar 
-        title='MyFlix App'
-        onLogout={() => { setUser(null); localStorage.clear(); 
-          navigate("/");
-        }}/>
+      <Container>
+        <NavigationBar 
+          title='MyFlix App'
+          onLogout={handleLogout}/>
+      </Container>
       { user ? (
-      <Row className="mt-0">
-      <div className="movie-container">
-        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
-          {movies.map((movie) => (
-            <Col key={movie._id} className="mb-5">
-              <div className='card-container'>
-              <Card>
-                <Card.Img className='card-img-top' variant="top" src={movie.ImageURL} />
-                <Card.Body>
-                  <div className='cardBody-container'>
-                  <Card.Title>{movie.Title}</Card.Title>
-                  <Card.Text>Id: {movie._id}</Card.Text>
-                  <Card.Text>Director: {movie.Director.Name}</Card.Text>
-                  {showDetails[movie._id] && (
-                    <>
-                      <Card.Text>Year: {movie.Year}</Card.Text>
-                      <Card.Text>Rating: {movie.Rating}</Card.Text>
-                      <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
-                      <Card.Text>Description: {movie.Description}</Card.Text>
-                    </>
-                  )}
-                  </div>
-                  <Button
-                    variant="link"
-                    onClick={() => toggleDetails(movie._id)}>
-                    {showDetails[movie._id] ? 'Show Less' : 'Show More'}
-                  </Button>
-                </Card.Body>
-              </Card>
-              <Button variant="secondary" onClick={() => handleAddFavorite(movie._id)}>Add to favorite list</Button>
-              </div>
-            </Col>
-          ))}
+        <>
+        <Row>
+          <Col>
+          <h3>Welcome, {user.Name}</h3>
+            <p>Email: {user.Email}</p>
+            <Link to="/updateProfile">
+              <Button variant="primary">Update profile</Button>
+            </Link>
+          </Col>
         </Row>
-      </div>
-      </Row>
+        <Row className="mt-0">
+            <div className="movie-container">
+              <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+                {movies.map((movie) => (
+                  <Col key={movie._id} className="mb-5">
+                    
+                      <Card>
+                        <Card.Img className='card-img-top' variant="top" src={movie.ImageURL} />
+                        <Card.Body>
+                          <div className='cardBody-container'>
+                            <Card.Title>{movie.Title}</Card.Title>
+                            <Card.Text>Director: {movie.Director.Name}</Card.Text>
+                            {showDetails[movie._id] && (
+                              <>
+                                <Card.Text>Year: {movie.Year}</Card.Text>
+                                <Card.Text>Rating: {movie.Rating}</Card.Text>
+                                <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
+                                <Card.Text>Description: {movie.Description}</Card.Text>
+                              </>
+                            )}
+                          </div>
+                          <Button
+                            variant="link"
+                            onClick={() => toggleDetails(movie._id)}>
+                            {showDetails[movie._id] ? 'Show Less' : 'Show More'}
+                          </Button>
+                        </Card.Body>
+                        <Card.Footer>
+                          <div>
+                        <Button variant="secondary" onClick={() => handleAddFavorite(movie._id)}>Add to favorite list</Button>
+                        </div>
+                        </Card.Footer>
+                      </Card>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          </Row></>
       ) : (
-        <div>There is no movies</div>
+        <Row>
+          <p>There is no user</p>
+        </Row>
         )} 
     </>
   );
