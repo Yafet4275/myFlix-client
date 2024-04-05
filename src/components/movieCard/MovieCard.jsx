@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Card, Button, Col, Row, Form } from 'react-bootstrap';
 import { NavigationBar } from '../navigationBar/navigationBar';
 import './movieCard.css';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export function MovieCard() {
