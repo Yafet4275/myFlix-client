@@ -12,4 +12,9 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px; */
 }
-  
+
+.card-container, .cardBody-container {
+    width: 100%; /* Adjust this value as needed */
+    display: flex;
+    flex-direction: column;
+  }

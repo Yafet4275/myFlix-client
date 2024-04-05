@@ -1,16 +1,33 @@
 # MyFlix Client
 
-Welcome to the MyFlix client project! This project is part of the Full Stack Developer Nanodegree.
+Welcome to the MyFlix client project! This project is part of the Full Stack Developer.
 
-## Project Structure
+myFlix-client app is a Single Page Application (SPA) built with React, React Bootstrap, React Router and Bootstrap. Shows cinematic content. The app allows users to view a list of movies, search for movies by title, view details about individual movies, and save movies to Favorites. Profile updates and user authentication are also supported. The app is responsive and mobile-friendly, and includes a custom 404 error page to handle invalid routes. JWT tokens are used for user authentication and authorization along with password hashing for added security on the backend.
 
-myFlix-client
-├── .gitignore
-├── package.json
-├── src
-│ ├── index.html
-│ ├── index.scss
-│ └── index.jsx
+
+# Technologies Used
+- React: A JavaScript library for building user interfaces.
+- React Bootstrap: A front-end framework built on top of Bootstrap for React components.
+- React Router: A routing library for React that enables navigation between different components.
+
+## Dependencies
+- Production Dependencies
+- bootstrap: ^5.3.3
+- react: ^18.2.0
+- react-bootstrap: ^2.10.1
+- react-dom: ^18.2.0
+- react-router: ^6.22.2
+- react-router-dom: ^6.22.2
+- react-scripts: ^5.0.1
+
+## API
+This app interacts with a custom movie API available at [Movie-API](https://github.com/Yafet4275/movie_api). The API provides data about movies, including their titles, descriptions, genres, directors, and more. Please refer to the API documentation for more details on available endpoints and data formats.
+
+## Project Links:
+MyflixApp repositry on Github: (https://github.com/Yafet4275/myFlix-client)
+Link to live app: (https://yafetlopez.netlify.app/)
+Link to Film Finder API repositry on Github: (https://my-flix-app-yafet-1527256b5000.herokuapp.com/)
+
 
 # Getting Started with Create React App
 

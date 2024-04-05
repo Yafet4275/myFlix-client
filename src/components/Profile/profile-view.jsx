@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Col, Row } from 'react-bootstrap';
-import { useParams, Link } from "react-router-dom";
+import { Container, Card, Button, Col, Row } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { NavigationBar } from '../navigationBar/navigationBar';
+import './profile.css';
 
 
 export function ProfileView() {
-  const { Username } = useParams();
   const [user, setUser] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [token, setToken] = useState(null);
   const [showDetails, setShowDetails] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -19,6 +21,14 @@ export function ProfileView() {
       fetchFavorites(storedUser.Name, storedToken);
     }
   }, []);
+
+  const userName = user ? user.Name : '';
+  const userEmail = user ? user.Email : '';
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.clear();
+    navigate("/");
+  }
 
   const fetchFavorites = async (userId, token) => {
     try {
@@ -38,9 +48,7 @@ export function ProfileView() {
 
   const handleRemoveFavorite = async (favoriteId) => {
     try {
-      // console.log('user.Name: ', user.Name);
-      // console.log('favoriteId: ', favoriteId);
-      const response = await fetch(`https://my-flix-app-yafet-1527256b5000.herokuapp.com/users/${user.Name}/favorites/${favoriteId}`, {
+      const response = await fetch(`https://my-flix-app-yafet-1527256b5000.herokuapp.com/users/${userName}/favorites/${favoriteId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -49,7 +57,8 @@ export function ProfileView() {
       if (!response.ok) {
         throw new Error('Failed to remove favorite movie');
       }
-      setFavorites(prevFavorites => prevFavorites.filter(movie => movie.id !== favoriteId));
+      fetchFavorites(userName, token);
+      alert("Movie has been removed");
     } catch (error) {
       console.error('Error removing favorite:', error);
     }
@@ -63,40 +72,72 @@ export function ProfileView() {
   };
 
   return (
-    <div className="movie-container">
-      <h2>Welcome, {user.Name}</h2>
-      <p>Email: {user.Email}</p>
-      <h3>Favorite Movies</h3>
-      <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
-        {favorites.map((favorite) => (
-          <Col key={favorite._id} className="mb-5">
-            <Card>
-              <Card.Img className='card-img-top' variant="top" src={favorite.ImageURL} />
-              <Card.Body>
-                <Card.Title>{favorite.Title}</Card.Title>
-                <Card.Text>Director: {favorite.Director.Name}</Card.Text>
-                <Card.Text>Year: {favorite.Year}</Card.Text>
-                {showDetails[favorite._id] && (
-                  <>
-                    <Card.Text>Rating: {favorite.Rating}</Card.Text>
-                    <Card.Text>Genre: {favorite.Genre.Name}</Card.Text>
-                    <Card.Text>Description: {favorite.Description}</Card.Text>
-                  </>
-                )}
-                <Button
-                  variant="link"
-                  onClick={() => toggleDetails(favorite._id)}>
-                  {showDetails[favorite._id] ? 'Show Less' : 'Show More'}
-                </Button>
-              </Card.Body>
-            </Card>
-            {/* <Link to={`/movies/${favorite._id}`}>Link</Link> */}
-            {/* <Link to="/LoginPage"> */}
-              <Button variant="secondary" onClick={() => handleRemoveFavorite(favorite._id)}>Remove</Button>
-            {/* </Link> */}
-          </Col>
-        ))}
-      </Row>
-    </div>
+    <>
+      <Container className='mx-auto'>
+        <NavigationBar 
+          title='MyFlix App'
+          onLogout={handleLogout}/>
+      </Container>
+        { user ? (
+        <>
+        <Container fluid>
+          <Row>
+            <Col>
+              <h3>Welcome, {userName}</h3>
+              <p>Email: {userEmail}</p>
+              <Link to="/updateProfile">
+                <Button variant="primary">Update profile</Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+        <Container fluid>
+          <Row className="mb-4">
+            <Col className='text-center'>
+              <h3>Favorite Movies</h3>
+            </Col>
+          </Row>
+          <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+          {favorites.map((favorite) => (
+            <Col key={favorite._id}>
+              <Card className="h-100">
+                <Card.Img className='card-img-top' variant="top" src={favorite.ImageURL} />
+                <Card.Body>
+                  <div className='cardBody-container'>
+                  <Card.Title>{favorite.Title}</Card.Title>
+                  <Card.Text>Director: {favorite.Director.Name}</Card.Text>
+                  {showDetails[favorite._id] && (
+                    <>
+                      <Card.Text>Year: {favorite.Year}</Card.Text>
+                      <Card.Text>Rating: {favorite.Rating}</Card.Text>
+                      <Card.Text>Genre: {favorite.Genre.Name}</Card.Text>
+                      <Card.Text>Description: {favorite.Description}</Card.Text>
+                    </>
+                    
+                  )}
+                  </div>
+                  <Button
+                    variant="link"
+                    onClick={() => toggleDetails(favorite._id)}>
+                    {showDetails[favorite._id] ? 'Show Less' : 'Show More'}
+                  </Button>
+                </Card.Body>
+                <Card.Footer>
+                <div className='card-container'>
+                  <Button variant="secondary" onClick={() => handleRemoveFavorite(favorite._id)}>Remove</Button>
+                </div>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+      </>
+      ) : (
+        <Row>
+          <p>There is no user</p>
+        </Row>
+      )}
+  </>
   );
-};
+}
