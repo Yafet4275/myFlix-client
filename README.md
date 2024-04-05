@@ -4,38 +4,6 @@ Welcome to the MyFlix client project! This project is part of the Full Stack Dev
 
 myFlix-client app is a Single Page Application (SPA) built with React, React Bootstrap, React Router and Bootstrap. Shows cinematic content. The app allows users to view a list of movies, search for movies by title, view details about individual movies, and save movies to Favorites. Profile updates and user authentication are also supported. The app is responsive and mobile-friendly, and includes a custom 404 error page to handle invalid routes. JWT tokens are used for user authentication and authorization along with password hashing for added security on the backend.
 
-## Project Structure
-
-myFlix-client
-├── .gitignore
-├── package.json
-├── src
-│ ├── components
-  │ ├── login-view
-    │ ├── login-view.jsx
-  │ ├── Mainview
-    │ ├── MainView.jsx
-    │ ├── MainView.css
-  │ ├── movieCard
-    │ ├── movieCard.jsx
-    │ ├── movieCard.css 
-  │ ├── navigationBar
-    │ ├── NavigationBar.jsx
-    │ ├── navigationBar.css 
-  │ ├── notFound
-    │ ├── NotFoundPage.jsx
-  │ ├── Profile
-    │ ├── profile-view.jsx
-    │ ├── updateUser.jsx
-    │ ├── profile.css
-  │ ├── signup-view
-    │ ├── signup-view.jsx
-    │ ├── signup-view.css
-│ ├── App.css
-│ ├── App.js
-│ ├── index.css
-│ ├── index.html
-│ └── index.js
 
 # Technologies Used
 - React: A JavaScript library for building user interfaces.
