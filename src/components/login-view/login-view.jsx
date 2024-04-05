@@ -82,19 +82,16 @@ export const LoginView = () => {
           </div>
           
           <div className="d-flex justify-content-around align-items-center mb-4">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="form1Example3"/>
-              {" "}Remember me{" "}
-                  </div>
-                  <a href="#!" onClick={handleRegisterClick}>Forgot password?</a>
-                </div>
-                <Button variant="primary mb-4" type="submit">Submit</Button>
-                <div className="text-center">
-                  <p>
-                    Not a member? {" "}
-                    <a href="#!" onClick={toggleForm}>Sign up now</a>
-                  </p>
-                </div>
+            <div className="form-check"></div>
+              <a href="#!" onClick={handleRegisterClick}>Forgot password?</a>
+            </div>
+              <Button variant="primary mb-4" type="submit">Submit</Button>
+              <div className="text-center">
+                <p>
+                  Not a member? {" "}
+                  <a href="#!" onClick={toggleForm}>Sign up now</a>
+                </p>
+              </div>
               </form>
             )}
           </div>

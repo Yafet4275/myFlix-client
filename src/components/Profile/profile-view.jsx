@@ -73,61 +73,65 @@ export function ProfileView() {
 
   return (
     <>
-      <Container>
+      <Container className='mx-auto'>
         <NavigationBar 
           title='MyFlix App'
           onLogout={handleLogout}/>
       </Container>
         { user ? (
-          <>
-        <Row>
-          <Col>
-            <h3>Welcome, {userName}</h3>
-            <p>Email: {userEmail}</p>
-            <Link to="/updateProfile">
-              <Button variant="primary">Update profile</Button>
-            </Link>
-          </Col>
-        </Row>
-        <Row className="mb-4">
-          <Col className='text-center'>
-            <h3>Favorite Movies</h3>
-          </Col>
-        </Row>
-        <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
-        {favorites.map((favorite) => (
-          <Col key={favorite._id}>
-            <Card className="h-100">
-              <Card.Img className='card-img-top' variant="top" src={favorite.ImageURL} />
-              <Card.Body>
-                <div className='cardBody-container'>
-                <Card.Title>{favorite.Title}</Card.Title>
-                <Card.Text>Director: {favorite.Director.Name}</Card.Text>
-                {showDetails[favorite._id] && (
-                  <>
-                    <Card.Text>Year: {favorite.Year}</Card.Text>
-                    <Card.Text>Rating: {favorite.Rating}</Card.Text>
-                    <Card.Text>Genre: {favorite.Genre.Name}</Card.Text>
-                    <Card.Text>Description: {favorite.Description}</Card.Text>
-                  </>
-                  
-                )}
+        <>
+        <Container fluid>
+          <Row>
+            <Col>
+              <h3>Welcome, {userName}</h3>
+              <p>Email: {userEmail}</p>
+              <Link to="/updateProfile">
+                <Button variant="primary">Update profile</Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+        <Container fluid>
+          <Row className="mb-4">
+            <Col className='text-center'>
+              <h3>Favorite Movies</h3>
+            </Col>
+          </Row>
+          <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+          {favorites.map((favorite) => (
+            <Col key={favorite._id}>
+              <Card className="h-100">
+                <Card.Img className='card-img-top' variant="top" src={favorite.ImageURL} />
+                <Card.Body>
+                  <div className='cardBody-container'>
+                  <Card.Title>{favorite.Title}</Card.Title>
+                  <Card.Text>Director: {favorite.Director.Name}</Card.Text>
+                  {showDetails[favorite._id] && (
+                    <>
+                      <Card.Text>Year: {favorite.Year}</Card.Text>
+                      <Card.Text>Rating: {favorite.Rating}</Card.Text>
+                      <Card.Text>Genre: {favorite.Genre.Name}</Card.Text>
+                      <Card.Text>Description: {favorite.Description}</Card.Text>
+                    </>
+                    
+                  )}
+                  </div>
+                  <Button
+                    variant="link"
+                    onClick={() => toggleDetails(favorite._id)}>
+                    {showDetails[favorite._id] ? 'Show Less' : 'Show More'}
+                  </Button>
+                </Card.Body>
+                <Card.Footer>
+                <div className='card-container'>
+                  <Button variant="secondary" onClick={() => handleRemoveFavorite(favorite._id)}>Remove</Button>
                 </div>
-                <Button
-                  variant="link"
-                  onClick={() => toggleDetails(favorite._id)}>
-                  {showDetails[favorite._id] ? 'Show Less' : 'Show More'}
-                </Button>
-              </Card.Body>
-              <Card.Footer>
-              <div className='card-container'>
-                <Button variant="secondary" onClick={() => handleRemoveFavorite(favorite._id)}>Remove</Button>
-              </div>
-              </Card.Footer>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
       </>
       ) : (
         <Row>

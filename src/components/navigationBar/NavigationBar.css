@@ -1,35 +1,44 @@
 .navbar-custom {
-    background-color: #007bff;
+  background-color: #007bff;
 }
   
 .navbar-brand {
-    color: #fff;
-    font-weight: bold;
+  color: #fff;
+  font-weight: bold;
 }
 
 .nav-link {
-    color: inherit; /* Use the same color as the text color in your navigation bar */
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
-    text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the same color as the text color in your navigation bar */
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  text-decoration: none; /* Remove underline */
 }
 
 .logout-btn {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    margin-left: auto;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  margin-left: auto;
 }
 
 .logout-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .custom-navbar-container {
-    padding-left: 5px; /* Adjust as needed */
-    padding-right: 5px; /* Adjust as needed */
-  }
+  padding-left: 0px; /* Adjust as needed */
+  padding-right: 0px; /* Adjust as needed */
+}
 
 .navbar-title {
-    font-size: 20px; /* Adjust as needed */
-    font-weight: bold;
+  font-size: 20px; /* Adjust as needed */
+  font-weight: bold;
+}
+
+.link-custom {
+  color: white; /* Change the color to white */
+  margin-right: 10px; /* Adjust the margin if needed */
+}
+
+.link-custom:hover {
+  color: lightgray; /* Change the color on hover */
 }
