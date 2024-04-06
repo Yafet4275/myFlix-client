@@ -23,6 +23,7 @@ export const FormComponent = ({ toggleForm }) => {
       Password: password,
       Birthday: birthday
     };
+    console.log(data);
     fetch("http://my-flix-app-yafet-1527256b5000.herokuapp.com/register", {
       method: "POST",
       body: JSON.stringify(data),
