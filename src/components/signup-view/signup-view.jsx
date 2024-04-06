@@ -16,12 +16,15 @@ export const FormComponent = ({ toggleForm }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(username);
+    
     const data = {
       Name: username,
-      Password: password,
       Email: email,
+      Password: password,
       Birthday: birthday
     };
+    console.log(data);
     fetch("http://my-flix-app-yafet-1527256b5000.herokuapp.com/register", {
       method: "POST",
       body: JSON.stringify(data),
@@ -31,7 +34,7 @@ export const FormComponent = ({ toggleForm }) => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        window.location.reload();
+        window.location.href = "/";
       } else {
         alert("Signup failed");
       }
@@ -51,6 +54,7 @@ export const FormComponent = ({ toggleForm }) => {
           minLength="3"/>
       </Form.Group>
       </div>
+      
       <div className="form-outline mb-4">
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
@@ -86,7 +90,6 @@ export const FormComponent = ({ toggleForm }) => {
         </p>
       </div>
     </form>
-
   </>
   );
 };
