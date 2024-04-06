@@ -53,6 +53,16 @@ export const FormComponent = ({ toggleForm }) => {
       </Form.Group>
       </div>
       
+    <div className="form-outline mb-4">
+    <Form.Group controlId="formEmail">
+      <Form.Label>Email:</Form.Label>
+        <Form.Control 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required/>
+    </Form.Group>
+    </div>
+
       <div className="form-outline mb-4">
         <Form.Group controlId="formPassword">
           <Form.Label>Password:</Form.Label>
@@ -63,15 +73,6 @@ export const FormComponent = ({ toggleForm }) => {
             </Form.Group>
         </div>
 
-      <div className="form-outline mb-4">
-      <Form.Group controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
-          <Form.Control 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required/>
-      </Form.Group>
-      </div>
 
       <div className="form-outline mb-4">
       <label className="form-label" for="form1Example23">Birthday:</label>
