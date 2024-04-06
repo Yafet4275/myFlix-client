@@ -24,9 +24,9 @@ myFlix-client app is a Single Page Application (SPA) built with React, React Boo
 This app interacts with a custom movie API available at [Movie-API](https://github.com/Yafet4275/movie_api). The API provides data about movies, including their titles, descriptions, genres, directors, and more. Please refer to the API documentation for more details on available endpoints and data formats.
 
 ## Project Links:
-MyflixApp repositry on Github: (https://github.com/Yafet4275/myFlix-client)
-Link to live app: (https://yafetlopez.netlify.app/)
-Link to Film Finder API repositry on Github: (https://my-flix-app-yafet-1527256b5000.herokuapp.com/)
+- MyflixApp repositry on Github: (https://github.com/Yafet4275/myFlix-client)
+- Link to live app: (https://yafetlopez.netlify.app/)
+- Link to Film Finder API repositry on Github: (https://my-flix-app-yafet-1527256b5000.herokuapp.com/)
 
 
 # Getting Started with Create React App
